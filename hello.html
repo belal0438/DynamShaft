@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scanner Project</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="scanner-container">
+      <div id="leftContainer">
+        <div class="sourceSelection">
+          <label for="source">Select Source:</label>
+          <select id="source"></select>
+        </div>
+
+        <div class="ShowUI">
+          <label for="showUI">Show UI:</label>
+          <input
+            type="checkbox"
+            id="showUI"
+            onchange="toggleCheckboxValueUi('showUI')" />
+        </div>
+        <div class="autoFeeder">
+          <label for="autoFeeder">AutoFeeder:</label>
+          <input
+            id="autoFeeder"
+            type="checkbox"
+            onchange="toggleCheckboxValue('autoFeeder')" />
+        </div>
+        <div class="colores">
+          <label for="pixelType">Pixel Type:</label>
+          <div class="inoutcolores">
+            <input type="radio" name="pixelType" id="pixelTypeBW"
+            value="blackAndWhite"" checked /> BW
+            <input
+              type="radio"
+              name="pixelType"
+              id="pixelTypeGray"
+              value="gray" />
+            Gray
+            <input
+              type="radio"
+              name="pixelType"
+              id="pixelTypecolore"
+              value="colorful" />
+            colore
+          </div>
+        </div>
+        <div class="resolutions">
+          <label for="resolution">Resolution:</label>
+          <select id="resolution" onchange="updateResolution()">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+          </select>
+        </div>
+        <div class="btn">
+          <button type="button" value="Scan" onclick="acquireImage()">
+            Scan
+          </button>
+
+          <button
+            type="button"
+            value="Scan"
+            onclick="scanAndSaveMultiPagePDF()">
+            Scan and Save1
+          </button>
+
+          <button
+            type="button"
+            value="Scan"
+            onclick="scanAndSaveIndividualPDFs()">
+            Scan and Save2
+          </button>
+
+          <button type="button" onclick="removeBlankImages()">
+            Remove Blank Images
+          </button>
+          <button type="button" onclick="removeAllImages()">
+            Remove All Images
+          </button>
+        </div>
+      </div>
+      <div id="rightContainer">
+        <div id="dwtcontrolContainer"></div>
+      </div>
+    </div>
+
+    <script src="Resources/dynamsoft.webtwain.initiate.js"></script>
+    <script src="Resources/dynamsoft.webtwain.config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
